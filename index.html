@@ -1,0 +1,1523 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每天比赛_赛事影像社区 | 官方品牌影像门户</title>
+<meta name="description" content="每天比赛官方网站，专注赛事影像内容生态，汇聚原创比赛集锦、赛程解读与创作者社区，为企业与用户提供品质内容平台。">
+<meta name="keywords" content="每天比赛,比赛,赛事影像,比赛社区,官方平台">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2a4a'/%3E%3Cpath d='M22 18l26 14-26 14z' fill='%23ffb703'/%3E%3C/svg%3E">
+<style>
+:root{
+  --mtc-ink:#16233d;
+  --mtc-ink-soft:#3b4a68;
+  --mtc-navy:#1b2a4a;
+  --mtc-navy-deep:#0f1a30;
+  --mtc-gold:#ffb703;
+  --mtc-gold-deep:#f08c00;
+  --mtc-sky:#4c86d9;
+  --mtc-paper:#f5f7fb;
+  --mtc-line:#dfe5f0;
+  --mtc-mute:#6c7893;
+  --mtc-white:#ffffff;
+  --mtc-radius:16px;
+  --mtc-shadow:0 10px 30px rgba(22,35,61,.09);
+  --mtc-shadow-hover:0 18px 44px rgba(22,35,61,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  color:var(--mtc-ink);
+  background:var(--mtc-paper);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+
+/* ===== 吸顶区（公告条 + 页头） ===== */
+.mtc-topbar{position:sticky;top:0;z-index:120;background:var(--mtc-navy-deep);color:#e7ecf7;font-size:13.5px}
+.mtc-topbar-inner{
+  max-width:1240px;margin:0 auto;padding:9px 22px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.mtc-topbar-badge{
+  background:var(--mtc-gold);color:#2a1d00;font-weight:700;
+  padding:2px 10px;border-radius:999px;font-size:12px;letter-spacing:.5px;flex:none;
+}
+.mtc-topbar-text{flex:1;min-width:200px;opacity:.92}
+.mtc-topbar-text strong{color:var(--mtc-gold);font-weight:600}
+.mtc-topbar-close{
+  color:#aab8d4;font-size:12px;padding:2px 8px;border:1px solid #33456b;border-radius:6px;
+  transition:.2s;flex:none;
+}
+.mtc-topbar-close:hover{color:#fff;border-color:var(--mtc-gold)}
+
+.mtc-header{
+  position:sticky;top:0;z-index:110;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--mtc-line);
+  box-shadow:0 2px 14px rgba(22,35,61,.05);
+}
+.mtc-header-inner{
+  max-width:1240px;margin:0 auto;padding:0 22px;
+  display:flex;align-items:center;gap:26px;height:70px;
+}
+.mtc-brand{display:flex;align-items:center;gap:11px;flex:none}
+.mtc-brand-mark{
+  width:42px;height:42px;border-radius:12px;
+  background:linear-gradient(135deg,var(--mtc-navy) 0%,#2f4a7d 100%);
+  display:grid;place-items:center;position:relative;overflow:hidden;
+}
+.mtc-brand-mark::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 78% 18%,rgba(255,183,3,.55),transparent 55%);
+}
+.mtc-brand-mark svg{width:20px;height:20px;position:relative;z-index:2}
+.mtc-brand-name{font-size:19px;font-weight:800;letter-spacing:.5px;line-height:1.15}
+.mtc-brand-name small{display:block;font-size:10.5px;font-weight:500;color:var(--mtc-mute);letter-spacing:1.6px}
+
+.mtc-nav{display:flex;gap:4px;flex:1;flex-wrap:wrap}
+.mtc-nav a{
+  padding:8px 13px;border-radius:9px;font-size:14.5px;color:var(--mtc-ink-soft);
+  font-weight:500;transition:.22s;white-space:nowrap;
+}
+.mtc-nav a:hover,.mtc-nav a.is-active{background:#eef2fa;color:var(--mtc-navy);font-weight:700}
+
+.mtc-head-tools{display:flex;align-items:center;gap:10px;flex:none}
+.mtc-search{position:relative;display:flex;align-items:center}
+.mtc-search input{
+  width:190px;padding:9px 34px 9px 14px;border-radius:999px;border:1px solid var(--mtc-line);
+  background:#f7f9fd;font-size:13.5px;color:var(--mtc-ink);outline:none;transition:.25s;
+}
+.mtc-search input:focus{width:230px;border-color:var(--mtc-sky);background:#fff;box-shadow:0 0 0 3px rgba(76,134,217,.14)}
+.mtc-search button{
+  position:absolute;right:5px;width:28px;height:28px;border-radius:50%;
+  display:grid;place-items:center;color:var(--mtc-mute);transition:.2s;
+}
+.mtc-search button:hover{background:var(--mtc-navy);color:#fff}
+.mtc-search-tip{
+  position:absolute;top:46px;left:0;right:0;background:#fff;border:1px solid var(--mtc-line);
+  border-radius:12px;box-shadow:var(--mtc-shadow);padding:8px;font-size:13px;display:none;z-index:60;
+}
+.mtc-search-tip.is-open{display:block}
+.mtc-search-tip p{padding:6px 10px;color:var(--mtc-mute)}
+.mtc-search-tip span{display:block;padding:7px 10px;border-radius:8px;cursor:pointer;color:var(--mtc-ink-soft)}
+.mtc-search-tip span:hover{background:#eef2fa;color:var(--mtc-navy)}
+
+.mtc-btn{
+  display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:999px;
+  font-size:14px;font-weight:700;transition:.24s;white-space:nowrap;
+}
+.mtc-btn-primary{background:var(--mtc-gold);color:#2a1d00;box-shadow:0 6px 18px rgba(255,183,3,.4)}
+.mtc-btn-primary:hover{background:var(--mtc-gold-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(240,140,0,.45)}
+.mtc-btn-ghost{border:1.5px solid var(--mtc-navy);color:var(--mtc-navy)}
+.mtc-btn-ghost:hover{background:var(--mtc-navy);color:#fff;transform:translateY(-2px)}
+.mtc-btn-sm{padding:7px 15px;font-size:13px}
+
+.mtc-burger{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--mtc-line);color:var(--mtc-navy);font-size:20px;align-items:center;justify-content:center}
+
+/* ===== 通用版心与标题 ===== */
+.mtc-wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+.mtc-section{padding:68px 0}
+.mtc-section-head{margin-bottom:34px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.mtc-kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+  letter-spacing:1.6px;color:var(--mtc-gold-deep);text-transform:uppercase;margin-bottom:9px;
+}
+.mtc-kicker::before{content:"";width:22px;height:2px;background:var(--mtc-gold)}
+.mtc-h2{font-size:clamp(23px,2.6vw,31px);font-weight:800;line-height:1.3;letter-spacing:-.4px}
+.mtc-h2 em{font-style:normal;color:var(--mtc-sky)}
+.mtc-sub{color:var(--mtc-mute);font-size:14.5px;max-width:640px;margin-top:9px}
+
+/* ===== 首屏 ===== */
+.mtc-hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(255,183,3,.22),transparent 46%),
+    radial-gradient(circle at 8% 88%,rgba(76,134,217,.32),transparent 52%),
+    linear-gradient(150deg,#0f1a30 0%,#1b2a4a 58%,#24375f 100%);
+}
+.mtc-hero::before{
+  content:"";position:absolute;inset:0;opacity:.32;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(circle at 60% 40%,#000 20%,transparent 78%);
+}
+.mtc-hero-inner{
+  position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:74px 22px 78px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;
+}
+.mtc-hero-badge{
+  display:inline-flex;align-items:center;gap:9px;padding:6px 15px;border-radius:999px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  font-size:12.5px;letter-spacing:1px;margin-bottom:22px;
+}
+.mtc-hero-badge i{width:7px;height:7px;border-radius:50%;background:#33d69f;box-shadow:0 0 0 4px rgba(51,214,159,.2);display:inline-block}
+.mtc-hero h1{font-size:clamp(40px,5.6vw,68px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:18px}
+.mtc-hero h1 span{
+  display:block;background:linear-gradient(96deg,var(--mtc-gold) 0%,#ffd977 62%,#fff2c8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.mtc-hero-lead{font-size:17px;font-weight:600;color:#dfe6f5;margin-bottom:14px;letter-spacing:.3px}
+.mtc-hero-desc{font-size:14.6px;color:#b6c2da;max-width:540px;margin-bottom:28px}
+.mtc-hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:34px}
+.mtc-hero-actions .mtc-btn-ghost{border-color:rgba(255,255,255,.42);color:#fff}
+.mtc-hero-actions .mtc-btn-ghost:hover{background:#fff;color:var(--mtc-navy)}
+.mtc-hero-stats{display:flex;gap:38px;flex-wrap:wrap}
+.mtc-hero-stat b{display:block;font-size:29px;font-weight:900;color:var(--mtc-gold);letter-spacing:-.5px;line-height:1.2}
+.mtc-hero-stat span{font-size:12.8px;color:#93a2c2;letter-spacing:.6px}
+
+.mtc-hero-visual{position:relative}
+.mtc-hero-frame{
+  position:relative;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 70px rgba(0,0,0,.45);
+  aspect-ratio:16/11;
+}
+.mtc-hero-frame img{width:100%;height:100%;object-fit:cover}
+.mtc-play-chip{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.94);
+  display:grid;place-items:center;box-shadow:0 12px 32px rgba(0,0,0,.4);transition:.25s;
+}
+.mtc-play-chip:hover{transform:translate(-50%,-50%) scale(1.1);background:var(--mtc-gold)}
+.mtc-play-chip svg{width:22px;height:22px;margin-left:3px;fill:var(--mtc-navy)}
+.mtc-hero-float{
+  position:absolute;right:-14px;bottom:-18px;background:#fff;color:var(--mtc-ink);
+  border-radius:15px;padding:13px 17px;box-shadow:0 18px 40px rgba(0,0,0,.3);
+  display:flex;align-items:center;gap:11px;min-width:190px;
+}
+.mtc-hero-float .dot{width:36px;height:36px;border-radius:11px;background:#fff3d6;display:grid;place-items:center;color:var(--mtc-gold-deep);font-weight:900;font-size:15px}
+.mtc-hero-float b{display:block;font-size:13.6px;line-height:1.3}
+.mtc-hero-float span{font-size:11.6px;color:var(--mtc-mute)}
+
+/* ===== 关于 / 关键词解析 ===== */
+.mtc-about{background:#fff}
+.mtc-about-grid{display:grid;grid-template-columns:1fr 300px;gap:46px;align-items:start}
+.mtc-prose p{font-size:15px;color:var(--mtc-ink-soft);margin-bottom:17px;text-align:justify}
+.mtc-prose p strong{color:var(--mtc-navy);font-weight:700}
+.mtc-prose h3{font-size:17.5px;font-weight:800;color:var(--mtc-navy);margin:26px 0 11px;padding-left:13px;border-left:3px solid var(--mtc-gold)}
+.mtc-side-card{
+  background:linear-gradient(160deg,#1b2a4a,#24375f);color:#fff;border-radius:var(--mtc-radius);
+  padding:26px 24px;position:sticky;top:150px;
+}
+.mtc-side-card h3{font-size:16.5px;font-weight:800;margin-bottom:14px;color:var(--mtc-gold)}
+.mtc-side-card ul{display:grid;gap:11px;font-size:13.6px;color:#c6d1e6}
+.mtc-side-card li{display:flex;gap:9px;align-items:flex-start;line-height:1.6}
+.mtc-side-card li::before{content:"›";color:var(--mtc-gold);font-weight:900;flex:none}
+.mtc-side-card .mtc-btn{margin-top:20px;width:100%;justify-content:center}
+
+/* ===== 焦点内容 ===== */
+.mtc-focus-grid{display:grid;grid-template-columns:1.28fr 1fr 1fr;grid-template-rows:auto auto;gap:20px}
+.mtc-focus-main{grid-row:1 / span 2}
+.mtc-vcard{
+  position:relative;border-radius:var(--mtc-radius);overflow:hidden;background:#fff;
+  box-shadow:var(--mtc-shadow);transition:.28s;display:flex;flex-direction:column;
+}
+.mtc-vcard:hover{transform:translateY(-6px);box-shadow:var(--mtc-shadow-hover)}
+.mtc-vcard-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#dde4f0}
+.mtc-vcard-thumb img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.mtc-vcard:hover .mtc-vcard-thumb img{transform:scale(1.06)}
+.mtc-vcard-thumb::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(15,26,48,0) 42%,rgba(15,26,48,.72) 100%);
+}
+.mtc-vtag{
+  position:absolute;left:12px;top:12px;z-index:3;background:rgba(255,183,3,.95);color:#2a1d00;
+  font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:6px;letter-spacing:.5px;
+}
+.mtc-vdur{
+  position:absolute;right:12px;bottom:12px;z-index:3;background:rgba(10,18,34,.82);color:#fff;
+  font-size:11.5px;padding:3px 9px;border-radius:5px;font-weight:600;letter-spacing:.4px;
+}
+.mtc-vplay{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.86);z-index:3;
+  width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:grid;place-items:center;opacity:0;transition:.28s;
+}
+.mtc-vcard:hover .mtc-vplay{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.mtc-vplay svg{width:17px;height:17px;fill:var(--mtc-navy);margin-left:2px}
+.mtc-vcard-body{padding:16px 18px 17px;display:flex;flex-direction:column;gap:8px;flex:1}
+.mtc-vcard-body h3{font-size:16px;font-weight:800;line-height:1.42;color:var(--mtc-navy)}
+.mtc-focus-main .mtc-vcard-body h3{font-size:20px}
+.mtc-vcard-body p{font-size:13.2px;color:var(--mtc-mute);line-height:1.65;flex:1}
+.mtc-vmeta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.4px;color:var(--mtc-mute);flex-wrap:wrap}
+.mtc-author{display:flex;align-items:center;gap:7px;font-weight:600;color:var(--mtc-ink-soft)}
+.mtc-avatar{
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:11.5px;font-weight:800;color:#fff;flex:none;
+}
+.mtc-avatar.a1{background:linear-gradient(135deg,#4c86d9,#2c5da8)}
+.mtc-avatar.a2{background:linear-gradient(135deg,#f08c00,#c56a00)}
+.mtc-avatar.a3{background:linear-gradient(135deg,#2fa876,#1d7a54)}
+.mtc-avatar.a4{background:linear-gradient(135deg,#b158a8,#7d3a76)}
+.mtc-avatar.a5{background:linear-gradient(135deg,#e05a5a,#a83838)}
+.mtc-avatar.a6{background:linear-gradient(135deg,#3f7fa8,#2a5675)}
+.mtc-vacts{display:flex;gap:5px}
+.mtc-icon-btn{
+  display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border-radius:8px;
+  font-size:12.3px;color:var(--mtc-mute);transition:.2s;
+}
+.mtc-icon-btn:hover{background:#eef2fa;color:var(--mtc-navy)}
+.mtc-icon-btn.is-on{color:var(--mtc-gold-deep);font-weight:700}
+
+/* ===== 视频流 / 标签筛选 ===== */
+.mtc-filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:26px}
+.mtc-chip{
+  padding:8px 17px;border-radius:999px;border:1.5px solid var(--mtc-line);background:#fff;
+  font-size:13.4px;font-weight:600;color:var(--mtc-ink-soft);transition:.22s;
+}
+.mtc-chip:hover{border-color:var(--mtc-sky);color:var(--mtc-sky)}
+.mtc-chip.is-active{background:var(--mtc-navy);border-color:var(--mtc-navy);color:#fff}
+.mtc-stream{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.mtc-stream .mtc-vcard.is-hidden{display:none}
+.mtc-empty{
+  display:none;text-align:center;padding:46px 20px;color:var(--mtc-mute);
+  background:#fff;border-radius:var(--mtc-radius);border:1px dashed var(--mtc-line);
+}
+.mtc-empty.is-open{display:block}
+
+/* ===== 专题 ===== */
+.mtc-special{background:linear-gradient(180deg,#0f1a30 0%,#1b2a4a 100%);color:#fff}
+.mtc-special .mtc-h2{color:#fff}
+.mtc-special .mtc-sub{color:#9dabc8}
+.mtc-special-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mtc-special-card{
+  position:relative;border-radius:var(--mtc-radius);overflow:hidden;min-height:290px;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:22px;
+  border:1px solid rgba(255,255,255,.1);transition:.3s;
+}
+.mtc-special-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s}
+.mtc-special-card::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(15,26,48,.15) 0%,rgba(15,26,48,.9) 88%);
+}
+.mtc-special-card:hover{transform:translateY(-6px);border-color:rgba(255,183,3,.5)}
+.mtc-special-card:hover img{transform:scale(1.07)}
+.mtc-special-card>*{position:relative;z-index:2}
+.mtc-sp-status{
+  align-self:flex-start;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:5px;
+  background:rgba(255,183,3,.92);color:#2a1d00;margin-bottom:auto;
+}
+.mtc-sp-status.done{background:rgba(51,214,159,.9);color:#04281a}
+.mtc-special-card h3{font-size:18px;font-weight:800;margin:13px 0 7px;line-height:1.4}
+.mtc-special-card p{font-size:13px;color:#b9c5dc;line-height:1.65}
+.mtc-sp-meta{font-size:12px;color:#8b9ab8;margin-top:11px;display:flex;gap:14px;flex-wrap:wrap}
+
+/* ===== 创作者 ===== */
+.mtc-creators{background:#fff}
+.mtc-creator-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mtc-creator-card{
+  background:var(--mtc-paper);border:1px solid var(--mtc-line);border-radius:var(--mtc-radius);
+  padding:24px 20px;text-align:center;transition:.28s;cursor:pointer;
+}
+.mtc-creator-card:hover{background:#fff;border-color:var(--mtc-gold);transform:translateY(-5px);box-shadow:var(--mtc-shadow-hover)}
+.mtc-creator-ava{
+  width:64px;height:64px;border-radius:20px;margin:0 auto 13px;display:grid;place-items:center;
+  font-size:23px;font-weight:900;color:#fff;letter-spacing:.5px;
+}
+.mtc-creator-card h3{font-size:15.6px;font-weight:800;color:var(--mtc-navy);margin-bottom:4px}
+.mtc-creator-role{font-size:12.4px;color:var(--mtc-gold-deep);font-weight:700;margin-bottom:9px}
+.mtc-creator-card p{font-size:12.8px;color:var(--mtc-mute);line-height:1.62;min-height:60px}
+.mtc-creator-nums{display:flex;justify-content:center;gap:18px;margin-top:13px;padding-top:13px;border-top:1px dashed var(--mtc-line)}
+.mtc-creator-nums b{display:block;font-size:15px;color:var(--mtc-navy);font-weight:800}
+.mtc-creator-nums span{font-size:11.4px;color:var(--mtc-mute)}
+
+/* ===== 榜单 ===== */
+.mtc-rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mtc-rank-card{background:#fff;border-radius:var(--mtc-radius);padding:24px 22px;box-shadow:var(--mtc-shadow)}
+.mtc-rank-card h3{
+  font-size:16px;font-weight:800;color:var(--mtc-navy);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.mtc-rank-card h3 i{font-style:normal;font-size:12px;background:#eef2fa;color:var(--mtc-sky);padding:2px 8px;border-radius:5px;font-weight:700}
+.mtc-rank-list li{
+  display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px dashed #edf1f8;
+  font-size:13.5px;color:var(--mtc-ink-soft);
+}
+.mtc-rank-list li:last-child{border-bottom:none}
+.mtc-rank-num{
+  width:22px;height:22px;border-radius:6px;display:grid;place-items:center;
+  font-size:11.5px;font-weight:800;background:#eef2fa;color:var(--mtc-mute);flex:none;
+}
+.mtc-rank-list li:nth-child(1) .mtc-rank-num{background:var(--mtc-gold);color:#2a1d00}
+.mtc-rank-list li:nth-child(2) .mtc-rank-num{background:#c9d5e8;color:#2c3d5c}
+.mtc-rank-list li:nth-child(3) .mtc-rank-num{background:#e6cfb8;color:#6b4a22}
+.mtc-rank-title{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mtc-rank-val{font-size:12px;color:var(--mtc-mute);font-weight:700;flex:none}
+
+/* ===== 评价 ===== */
+.mtc-voice{background:var(--mtc-paper)}
+.mtc-voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mtc-voice-card{
+  background:#fff;border-radius:var(--mtc-radius);padding:22px;box-shadow:var(--mtc-shadow);
+  display:flex;flex-direction:column;gap:13px;transition:.26s;
+}
+.mtc-voice-card:hover{transform:translateY(-4px);box-shadow:var(--mtc-shadow-hover)}
+.mtc-voice-head{display:flex;align-items:center;gap:11px}
+.mtc-voice-head b{font-size:14px;color:var(--mtc-navy);display:block;line-height:1.3}
+.mtc-voice-head span{font-size:11.8px;color:var(--mtc-mute)}
+.mtc-voice-card p{font-size:13.5px;color:var(--mtc-ink-soft);line-height:1.72;flex:1}
+.mtc-stars{color:var(--mtc-gold);font-size:13px;letter-spacing:2px}
+
+/* ===== 更新日志 ===== */
+.mtc-log{background:#fff}
+.mtc-log-list{display:grid;gap:0;border-left:2px solid var(--mtc-line);margin-left:10px}
+.mtc-log-item{position:relative;padding:0 0 28px 30px}
+.mtc-log-item:last-child{padding-bottom:0}
+.mtc-log-item::before{
+  content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;
+  background:#fff;border:3px solid var(--mtc-gold);
+}
+.mtc-log-date{font-size:12.2px;color:var(--mtc-mute);font-weight:700;letter-spacing:.6px}
+.mtc-log-item h3{font-size:15.6px;font-weight:800;color:var(--mtc-navy);margin:5px 0 6px}
+.mtc-log-item p{font-size:13.4px;color:var(--mtc-mute);line-height:1.7}
+
+/* ===== FAQ ===== */
+.mtc-faq{background:linear-gradient(180deg,#f5f7fb,#eef2fa)}
+.mtc-faq-list{display:grid;gap:11px;max-width:900px;margin:0 auto}
+.mtc-faq-item{background:#fff;border-radius:12px;border:1px solid var(--mtc-line);overflow:hidden;transition:.22s}
+.mtc-faq-item[open]{border-color:var(--mtc-gold);box-shadow:var(--mtc-shadow)}
+.mtc-faq-item summary{
+  padding:16px 20px;font-size:14.6px;font-weight:700;color:var(--mtc-navy);cursor:pointer;
+  list-style:none;display:flex;align-items:center;gap:11px;
+}
+.mtc-faq-item summary::-webkit-details-marker{display:none}
+.mtc-faq-item summary::before{content:"Q";color:var(--mtc-gold-deep);font-weight:900;font-size:14px;flex:none}
+.mtc-faq-item summary::after{content:"+";margin-left:auto;color:var(--mtc-mute);font-weight:400;font-size:19px;transition:.2s}
+.mtc-faq-item[open] summary::after{transform:rotate(45deg);color:var(--mtc-gold-deep)}
+.mtc-faq-body{padding:0 20px 18px 45px;font-size:13.6px;color:var(--mtc-ink-soft);line-height:1.75}
+
+/* ===== 联系 ===== */
+.mtc-contact{background:#fff}
+.mtc-contact-panel{
+  background:linear-gradient(140deg,#1b2a4a 0%,#2b4272 100%);border-radius:22px;color:#fff;
+  padding:48px 44px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.mtc-contact-panel::after{
+  content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,183,3,.26),transparent 66%);
+}
+.mtc-contact-panel h2{font-size:clamp(22px,2.6vw,30px);font-weight:800;margin-bottom:13px;line-height:1.32}
+.mtc-contact-panel p{font-size:14.3px;color:#b8c5dd;max-width:480px}
+.mtc-contact-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.mtc-contact-actions .mtc-btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+.mtc-contact-actions .mtc-btn-ghost:hover{background:#fff;color:var(--mtc-navy)}
+.mtc-contact-info{position:relative;z-index:2;display:grid;gap:14px;font-size:13.8px}
+.mtc-contact-info div{display:flex;gap:11px;align-items:flex-start;color:#d3dced}
+.mtc-contact-info b{color:var(--mtc-gold);font-weight:800;flex:none}
+
+/* ===== 页脚 ===== */
+.mtc-footer{background:var(--mtc-navy-deep);color:#93a2c2;padding:56px 0 26px;font-size:13.4px}
+.mtc-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:38px;padding-bottom:34px;border-bottom:1px solid #22304f}
+.mtc-footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:#fff}
+.mtc-footer-brand .mtc-brand-mark{width:36px;height:36px;border-radius:10px}
+.mtc-footer p{line-height:1.8;color:#8896b4;max-width:330px}
+.mtc-footer h4{color:#fff;font-size:14px;font-weight:800;margin-bottom:14px;letter-spacing:.5px}
+.mtc-footer ul{display:grid;gap:9px}
+.mtc-footer ul a{color:#8896b4;transition:.2s}
+.mtc-footer ul a:hover{color:var(--mtc-gold)}
+.mtc-footer-bottom{
+  padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:12.4px;color:#6e7d9d;
+}
+.mtc-footer-bottom a{color:#8b9ab8}
+.mtc-footer-bottom a:hover{color:var(--mtc-gold)}
+
+/* ===== 回到顶部 / Toast / 弹窗 ===== */
+.mtc-top-btn{
+  position:fixed;right:24px;bottom:26px;z-index:90;width:46px;height:46px;border-radius:13px;
+  background:var(--mtc-navy);color:#fff;display:grid;place-items:center;
+  box-shadow:0 12px 28px rgba(22,35,61,.3);opacity:0;pointer-events:none;transition:.28s;
+}
+.mtc-top-btn.is-show{opacity:1;pointer-events:auto}
+.mtc-top-btn:hover{background:var(--mtc-gold);color:#2a1d00;transform:translateY(-3px)}
+.mtc-toast{
+  position:fixed;left:50%;bottom:36px;transform:translate(-50%,20px);z-index:300;
+  background:#16233d;color:#fff;padding:11px 22px;border-radius:999px;font-size:13.5px;
+  box-shadow:0 14px 34px rgba(0,0,0,.32);opacity:0;pointer-events:none;transition:.3s;
+}
+.mtc-toast.is-show{opacity:1;transform:translate(-50%,0)}
+.mtc-modal{
+  position:fixed;inset:0;z-index:250;display:none;place-items:center;padding:20px;
+  background:rgba(10,18,34,.6);backdrop-filter:blur(3px);
+}
+.mtc-modal.is-open{display:grid}
+.mtc-modal-box{
+  background:#fff;border-radius:18px;max-width:520px;width:100%;padding:30px;
+  box-shadow:0 28px 70px rgba(0,0,0,.35);position:relative;animation:mtcPop .26s ease;
+}
+@keyframes mtcPop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.mtc-modal-box h3{font-size:19px;font-weight:800;color:var(--mtc-navy);margin-bottom:8px}
+.mtc-modal-box p{font-size:13.8px;color:var(--mtc-mute);margin-bottom:18px;line-height:1.7}
+.mtc-modal-close{position:absolute;right:16px;top:14px;font-size:20px;color:var(--mtc-mute);padding:4px 8px;border-radius:7px}
+.mtc-modal-close:hover{background:#eef2fa;color:var(--mtc-navy)}
+.mtc-field{display:grid;gap:7px;margin-bottom:14px}
+.mtc-field label{font-size:12.8px;font-weight:700;color:var(--mtc-ink-soft)}
+.mtc-field input,.mtc-field textarea{
+  width:100%;padding:10px 13px;border:1px solid var(--mtc-line);border-radius:10px;
+  font-size:13.8px;font-family:inherit;outline:none;transition:.2s;resize:vertical;
+}
+.mtc-field input:focus,.mtc-field textarea:focus{border-color:var(--mtc-sky);box-shadow:0 0 0 3px rgba(76,134,217,.14)}
+.mtc-share-row{display:flex;gap:10px;flex-wrap:wrap}
+.mtc-share-row a{
+  padding:9px 17px;border-radius:999px;background:#eef2fa;font-size:13px;font-weight:700;color:var(--mtc-navy);transition:.2s;
+}
+.mtc-share-row a:hover{background:var(--mtc-navy);color:#fff}
+
+/* ===== 响应式 ===== */
+@media (max-width:1080px){
+  .mtc-nav{display:none;position:absolute;left:0;right:0;top:70px;background:#fff;flex-direction:column;
+    padding:14px 22px 20px;gap:4px;border-bottom:1px solid var(--mtc-line);box-shadow:0 14px 30px rgba(22,35,61,.1)}
+  .mtc-nav.is-open{display:flex}
+  .mtc-burger{display:flex;margin-left:auto}
+  .mtc-head-tools{display:none}
+  .mtc-hero-inner{grid-template-columns:1fr;gap:40px;padding:52px 22px 62px}
+  .mtc-hero-float{right:8px}
+  .mtc-about-grid{grid-template-columns:1fr}
+  .mtc-side-card{position:static}
+  .mtc-focus-grid{grid-template-columns:1fr 1fr}
+  .mtc-focus-main{grid-row:auto;grid-column:1 / -1}
+  .mtc-stream{grid-template-columns:repeat(2,1fr)}
+  .mtc-special-grid{grid-template-columns:1fr 1fr}
+  .mtc-creator-grid{grid-template-columns:repeat(2,1fr)}
+  .mtc-rank-grid{grid-template-columns:1fr}
+  .mtc-voice-grid{grid-template-columns:1fr 1fr}
+  .mtc-contact-panel{grid-template-columns:1fr;padding:36px 26px}
+  .mtc-footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .mtc-header-inner{height:62px;padding:0 16px}
+  .mtc-brand-name{font-size:17px}
+  .mtc-nav{top:62px}
+  .mtc-wrap{padding:0 16px}
+  .mtc-section{padding:48px 0}
+  .mtc-hero-inner{padding:42px 16px 54px}
+  .mtc-hero-stats{gap:22px}
+  .mtc-hero-stat b{font-size:24px}
+  .mtc-focus-grid{grid-template-columns:1fr}
+  .mtc-stream{grid-template-columns:1fr}
+  .mtc-special-grid{grid-template-columns:1fr}
+  .mtc-creator-grid{grid-template-columns:1fr}
+  .mtc-voice-grid{grid-template-columns:1fr}
+  .mtc-footer-grid{grid-template-columns:1fr}
+  .mtc-topbar-inner{padding:8px 16px;font-size:12.6px}
+  .mtc-hero-float{position:static;margin-top:14px;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+  .mtc-contact-panel{padding:28px 20px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ===== 吸顶公告条 ===== -->
+<div class="mtc-topbar" id="mtcTopbar">
+  <div class="mtc-topbar-inner">
+    <span class="mtc-topbar-badge">更新</span>
+    <span class="mtc-topbar-text"><strong>每天比赛·冬季赛程影像企划</strong> 11月20日上线，新增 6 场城市联赛幕后记录、12 位创作者参赛笔记与「年度高光」专题征集报名入口。</span>
+    <button class="mtc-topbar-close" type="button" id="mtcTopbarClose">收起</button>
+  </div>
+</div>
+
+<!-- ===== 页头 ===== -->
+<header class="mtc-header" id="mtcHome">
+  <div class="mtc-header-inner">
+    <a class="mtc-brand" href="#mtcHome" aria-label="每天比赛官方网站首页">
+      <span class="mtc-brand-mark">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="#ffb703"/></svg>
+      </span>
+      <span class="mtc-brand-name">每天比赛<small>MEITIAN MATCH</small></span>
+    </a>
+    <nav class="mtc-nav" id="mtcNav" aria-label="主导航">
+      <a href="#mtcHome" class="is-active">首页</a>
+      <a href="#mtcFocus">焦点赛事</a>
+      <a href="#mtcStream">内容流</a>
+      <a href="#mtcSpecial">专题企划</a>
+      <a href="#mtcCreators">创作者</a>
+      <a href="#mtcLog">企业动态</a>
+      <a href="#mtcFaq">帮助</a>
+      <a href="#mtcContact">联系</a>
+    </nav>
+    <div class="mtc-head-tools">
+      <div class="mtc-search" id="mtcSearchWrap">
+        <input type="search" id="mtcSearchInput" placeholder="搜索比赛、球队、创作者" aria-label="站内搜索">
+        <button type="button" id="mtcSearchBtn" aria-label="搜索">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        </button>
+        <div class="mtc-search-tip" id="mtcSearchTip">
+          <p>热门搜索</p>
+          <span data-q="城市联赛">城市联赛 · 每场比赛的现场与幕后</span>
+          <span data-q="赛程解读">赛程解读 · 教练与解说视角</span>
+          <span data-q="创作者">创作者 · 参赛者的日常记录</span>
+        </div>
+      </div>
+      <button class="mtc-btn mtc-btn-primary mtc-btn-sm" type="button" id="mtcSubmitBtn">投稿报名</button>
+    </div>
+    <button class="mtc-burger" type="button" id="mtcBurger" aria-label="展开导航" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- ===== 首屏 ===== -->
+<section class="mtc-hero">
+  <div class="mtc-hero-inner">
+    <div>
+      <span class="mtc-hero-badge"><i></i>官方发布 · 每天更新的比赛影像社区</span>
+      <h1>每天比赛<span>让每一场对决被看见</span></h1>
+      <p class="mtc-hero-lead">每天比赛品牌官方网站｜赛事影像内容平台</p>
+      <p class="mtc-hero-desc">我们是一家持续运营的赛事影像企业，深耕城市联赛、校园赛事与民间竞技的原创记录，用专业摄制与真实叙事，为创作者搭台，为观众呈现高品质的比赛现场。</p>
+      <div class="mtc-hero-actions">
+        <a class="mtc-btn mtc-btn-primary" href="#mtcStream">浏览内容流</a>
+        <a class="mtc-btn mtc-btn-ghost" href="#mtcAbout">了解品牌故事</a>
+      </div>
+      <div class="mtc-hero-stats">
+        <div class="mtc-hero-stat"><b>1580+</b><span>已收录比赛场次</span></div>
+        <div class="mtc-hero-stat"><b>96</b><span>签约影像创作者</span></div>
+        <div class="mtc-hero-stat"><b>42万</b><span>社区长期关注用户</span></div>
+      </div>
+    </div>
+    <div class="mtc-hero-visual">
+      <div class="mtc-hero-frame">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 440'%3E%3Crect width='640' height='440' fill='%23192343'/%3E%3Ccircle cx='320' cy='220' r='150' fill='%232c4270' opacity='.55'/%3E%3Ccircle cx='320' cy='220' r='96' fill='none' stroke='%23ffffff' stroke-opacity='.28' stroke-width='2'/%3E%3Cline x1='320' y1='60' x2='320' y2='380' stroke='%23ffffff' stroke-opacity='.2' stroke-width='2'/%3E%3Ccircle cx='320' cy='220' r='6' fill='%23ffffff' opacity='.6'/%3E%3Cpath d='M110 340 Q230 250 340 300 T560 250' fill='none' stroke='%23ffb703' stroke-width='4' stroke-linecap='round' opacity='.85'/%3E%3Cpath d='M110 372 Q240 290 350 330 T560 292' fill='none' stroke='%234c86d9' stroke-width='3' stroke-linecap='round' opacity='.6'/%3E%3Crect x='60' y='60' width='120' height='34' rx='8' fill='%23ffb703'/%3E%3Ctext x='76' y='83' font-family='sans-serif' font-size='16' font-weight='bold' fill='%232a1d00'%3E季后赛%3C/text%3E%3Cg fill='%23ffffff' opacity='.5'%3E%3Ccircle cx='480' cy='110' r='5'/%3E%3Ccircle cx='510' cy='140' r='3'/%3E%3Ccircle cx='450' cy='150' r='4'/%3E%3C/g%3E%3Ctext x='250' y='400' font-family='sans-serif' font-size='19' fill='%23dfe6f5' opacity='.85'%3E城市联赛 · 决胜之夜%3C/text%3E%3C/svg%3E" alt="城市联赛决胜之夜比赛现场的战术视角画面" width="640" height="440" loading="lazy">
+        <button class="mtc-play-chip" type="button" aria-label="播放焦点内容" id="mtcHeroPlay">
+          <svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg>
+        </button>
+      </div>
+      <div class="mtc-hero-float">
+        <span class="dot">12</span>
+        <div><b>今日新增 12 场</b><span>赛程与幕后同步更新</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 品牌介绍与关键词解析 ===== -->
+<section class="mtc-section mtc-about" id="mtcAbout">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker">Brand Story</span>
+        <h2 class="mtc-h2">关于「每天比赛」：一个以真实为底色的<em>赛事影像品牌</em></h2>
+        <p class="mtc-sub">从一场比赛的现场记录出发，我们把它做成一件长期、专业、值得信赖的事情。</p>
+      </div>
+    </div>
+    <div class="mtc-about-grid">
+      <div class="mtc-prose">
+        <p><strong>每天比赛</strong>是一个专注赛事影像的原创内容品牌，也是面向所有比赛爱好者的社区平台。作为品牌官方网站，这里的每一次更新都围绕同一件事：把发生在球场、跑道、赛台和街头擂台上的真实瞬间，用专业镜头和克制叙事保存下来。我们相信，比赛的意义从来不只在于比分，更在于参与者在压力下的选择、在失利后的复盘、在胜利时的克制。这些细节无法被赛果表格概括，却正是影像存在的理由。</p>
+        <p>品牌自成立以来持续运营，逐步搭建起从前期跟拍、现场收音、赛后在剪辑到内容分发的完整链路。我们与城市联赛、校园体协、民间赛事主办方保持长期合作，累计收录超过一千五百场比赛的影像素材，形成了一套可检索、可追溯、可二次创作的赛事影像档案。对企业客户，我们提供赛事纪录与品牌内容服务；对普通用户，我们提供持续更新的内容社区，让每一位热爱比赛的人都能找到自己的位置。</p>
+        <h3>为什么叫「每天比赛」</h3>
+        <p>这个名字来自一个朴素观察：比赛每天都在发生，但被完整记录下来的很少。社区球场的一场夜战、校运会的一次逆风翻盘、业余联赛里一个坚持了十年的老将——它们构成了真实的竞技生态，却往往只在当事人的记忆里留存。我们把这个名字当作一种日常承诺：每天去看、每天去记录、每天去发布。不是等待一个宏大的赛季节点，而是在寻常的夜晚，也能找到值得被记住的对决。</p>
+        <p>因此，「每天比赛」的内容结构也围绕日常展开：有赛前的赛程解读与队伍分析，有赛中的多机位现场记录，有赛后的数据复盘与教练访谈，也有参赛者自己拍摄的手机素材与随笔。这些内容由品牌编辑团队与社区创作者共同完成，既保证专业品质，也保留了普通人视角的温度。</p>
+        <h3>内容生态与创作者机制</h3>
+        <p>我们把创作者视为品牌的核心资产，而不是内容供应链上的一环。平台设有明确的原创保护与署名机制，所有影像作品在上传时即记录拍摄者信息，转载与二次剪辑需获得授权。我们为签约创作者提供器材支持、拍摄培训与选题共创，帮助他们把「随手记录」升级为「持续表达」。每年我们会举办影像征集与赛季挑战，让新面孔有机会进入更大的舞台。</p>
+        <p>在内容筛选上，我们坚持三条标准：真实、有用、有表达。真实意味着不摆拍、不虚构赛况；有用意味着内容能为观众提供信息增量，比如战术拆解、训练方法、赛事攻略；有表达意味着影像之外还有观点，能看到拍摄者对所记录之事的理解。这三条标准构成了「每天比赛」的品质底线，也是我们能够积累口碑的原因。</p>
+        <h3>行业观察：赛事影像正在成为基础设施</h3>
+        <p>过去，赛事影像主要服务于转播与新闻报道，普通参与者很难获得属于自己的比赛画面。近些年，随着移动拍摄设备普及和社区内容平台成熟，赛事影像逐渐从「媒体产品」变成「公共记录」。一场社区联赛的完整影像，既是参赛者的纪念，也是主办方复盘运营的依据，还能为青训选材提供参考。我们判断，未来赛事影像会像赛程表一样，成为每一场比赛的标准配置。</p>
+        <p>基于这个判断，「每天比赛」把重心放在基础设施建设上：统一的素材规范、可检索的赛事标签体系、跨赛季的档案管理，以及与主办方打通的数据接口。我们不追求短期流量峰值，而是希望用五年、十年的时间，积累一套经得起回看的赛事影像库。这也是我们作为企业最看重的社会责任——让每一场比赛，都有被认真对待的机会。</p>
+      </div>
+      <aside class="mtc-side-card">
+        <h3>品牌关键词</h3>
+        <ul>
+          <li>官方网站 · 官方发布，信息一手可查</li>
+          <li>原创正版 · 全部影像均获拍摄者授权</li>
+          <li>高清专业 · 多机位摄制与规范化后期</li>
+          <li>社区共创 · 96 位创作者持续供稿</li>
+          <li>持续运营 · 每日更新，全年不停更</li>
+        </ul>
+        <button class="mtc-btn mtc-btn-primary" type="button" data-open="submit">加入创作者计划</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 焦点内容 ===== -->
+<section class="mtc-section" id="mtcFocus" style="background:#f5f7fb">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker">Focus</span>
+        <h2 class="mtc-h2">本期<em>焦点比赛</em>影像</h2>
+        <p class="mtc-sub">编辑团队从近七日的更新中挑选，涵盖现场记录、战术复盘与人物故事。</p>
+      </div>
+      <a class="mtc-btn mtc-btn-ghost mtc-btn-sm" href="#mtcStream">查看全部</a>
+    </div>
+    <div class="mtc-focus-grid">
+      <article class="mtc-vcard mtc-focus-main">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%230f1a30'/%3E%3Ccircle cx='320' cy='180' r='118' fill='%23223a63'/%3E%3Ccircle cx='320' cy='180' r='74' fill='none' stroke='%23ffb703' stroke-width='3' opacity='.75'/%3E%3Cpath d='M320 106v148M246 180h148' stroke='%23ffffff' stroke-opacity='.22' stroke-width='2'/%3E%3Cpath d='M50 300 L160 240 L270 275 L400 215 L520 255 L600 220' fill='none' stroke='%234c86d9' stroke-width='4' opacity='.65' stroke-linecap='round'/%3E%3Crect x='34' y='34' width='132' height='30' rx='6' fill='%23ffb703'/%3E%3Ctext x='48' y='55' font-family='sans-serif' font-size='15' font-weight='bold' fill='%232a1d00'%3E决胜时刻%3C/text%3E%3C/svg%3E" alt="城市联赛总决赛最后两分钟的多机位现场记录封面" loading="lazy">
+          <span class="mtc-vtag">重点推荐</span>
+          <span class="mtc-vdur">18:42</span>
+          <span class="mtc-vplay"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg></span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>最后两分钟：城市联赛总决赛多机位现场记录</h3>
+          <p>从落后四分到终场压哨，我们把六个机位的素材完整还原成一条时间线。包括场边教练的手势、替补席的反应、以及观众席上那位举着手写牌的老人。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a1">陈</span>陈牧野</span>
+            <span>11月18日 · 2.4万次播放</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>1268</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+              <button class="mtc-icon-btn" type="button" data-share>分享</button>
+            </div>
+            <span>#城市联赛 #决胜时刻</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%232a1d0a'/%3E%3Crect x='0' y='248' width='640' height='112' fill='%23411f08'/%3E%3Ccircle cx='200' cy='200' r='58' fill='%23ffb703' opacity='.85'/%3E%3Ccircle cx='430' cy='230' r='38' fill='%23f08c00' opacity='.8'/%3E%3Cpath d='M60 248 Q200 180 340 248 T620 248' fill='none' stroke='%23ffe3a3' stroke-width='3' opacity='.5'/%3E%3Ctext x='36' y='52' font-family='sans-serif' font-size='16' fill='%23ffe3a3'%3E夜场 · 加时赛%3C/text%3E%3C/svg%3E" alt="社区夜场加时赛的灯下对抗场面封面" loading="lazy">
+          <span class="mtc-vtag">新片</span>
+          <span class="mtc-vdur">09:15</span>
+          <span class="mtc-vplay"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg></span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>夜场加时：一群上班族的第九十分钟</h3>
+          <p>他们把比赛安排在晚上九点以后，因为只有那时候才凑齐人。这条片子记录了社区夜场联赛的完整一场。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a2">林</span>林一舟</span>
+            <span>11月17日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>864</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#夜场 #社区</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%230e2a24'/%3E%3Cpath d='M0 260 L120 210 L240 250 L360 190 L480 235 L640 175 L640 360 L0 360Z' fill='%23185c47'/%3E%3Ccircle cx='480' cy='96' r='42' fill='%23d9f2e6' opacity='.32'/%3E%3Cpath d='M120 260 Q180 220 240 250' fill='none' stroke='%2333d69f' stroke-width='4' stroke-linecap='round'/%3E%3Ctext x='34' y='50' font-family='sans-serif' font-size='16' fill='%23a7e6cf'%3E战术板%3C/text%3E%3C/svg%3E" alt="教练战术板拆解比赛阵型变化的纪录片封面" loading="lazy">
+          <span class="mtc-vtag">深度</span>
+          <span class="mtc-vdur">22:08</span>
+          <span class="mtc-vplay"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg></span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>战术板前的四十分钟：一位青训教练的赛前准备</h3>
+          <p>比赛开始前，他要在白板前讲四十分钟。这条片子完整记录了一次赛前准备会，包括他如何用三套方案应对同一个对手。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a3">周</span>周予安</span>
+            <span>11月16日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>653</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#战术 #青训</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23201433'/%3E%3Cg stroke='%23b158a8' stroke-width='3' opacity='.6'%3E%3Cpath d='M0 300 L640 60'/%3E%3Cpath d='M0 200 L640 320'/%3E%3Cpath d='M160 0 L420 360'/%3E%3C/g%3E%3Ccircle cx='320' cy='180' r='66' fill='none' stroke='%23f0b9e8' stroke-width='3'/%3E%3Ctext x='36' y='52' font-family='sans-serif' font-size='16' fill='%23f0b9e8'%3E数据复盘%3C/text%3E%3C/svg%3E" alt="用数据图表复盘一场比赛攻防节奏的分析封面" loading="lazy">
+          <span class="mtc-vtag">数据</span>
+          <span class="mtc-vdur">13:27</span>
+          <span class="mtc-vplay"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg></span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>用一张图看懂一场比赛：攻防节奏的可视化复盘</h3>
+          <p>我们把整场比赛的攻防转换画成了折线，意外发现决定胜负的不是最后那球，而是第二节中段的三分钟。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a4">苏</span>苏映白</span>
+            <span>11月15日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>741</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#数据 #复盘</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 内容流 ===== -->
+<section class="mtc-section" id="mtcStream" style="background:#fff">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker">Stream</span>
+        <h2 class="mtc-h2">每日更新的<em>比赛内容流</em></h2>
+        <p class="mtc-sub">按主题筛选，快速找到你想看的比赛类型。所有内容均由平台编辑与创作者原创发布。</p>
+      </div>
+    </div>
+    <div class="mtc-filters" id="mtcFilters">
+      <button class="mtc-chip is-active" type="button" data-filter="all">全部</button>
+      <button class="mtc-chip" type="button" data-filter="city">城市联赛</button>
+      <button class="mtc-chip" type="button" data-filter="campus">校园赛事</button>
+      <button class="mtc-chip" type="button" data-filter="folk">民间竞技</button>
+      <button class="mtc-chip" type="button" data-filter="story">人物故事</button>
+    </div>
+    <div class="mtc-stream" id="mtcStreamGrid">
+      <article class="mtc-vcard" data-cat="city">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%231c3157'/%3E%3Cpath d='M0 280 L140 200 L280 250 L430 180 L640 240 L640 360 L0 360Z' fill='%232f4f86'/%3E%3Ccircle cx='500' cy='90' r='36' fill='%23ffb703' opacity='.7'/%3E%3Ctext x='34' y='52' font-family='sans-serif' font-size='16' fill='%23cfe0ff'%3E城市德比%3C/text%3E%3C/svg%3E" alt="同城德比战赛前球迷入场的城市联赛内容封面" loading="lazy">
+          <span class="mtc-vtag">城市联赛</span>
+          <span class="mtc-vdur">11:06</span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>同城德比：两座球场之间的一条街</h3>
+          <p>两支球队的主场只隔一条街，球迷在同一个早餐铺排队。这场比赛之前，我们沿着那条街走了一遍。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a1">陈</span>陈牧野</span>
+            <span>11月18日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>523</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+              <button class="mtc-icon-btn" type="button" data-share>分享</button>
+            </div>
+            <span>#德比</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard" data-cat="campus">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23f0f5ff'/%3E%3Crect x='60' y='150' width='520' height='8' rx='4' fill='%234c86d9'/%3E%3Cg fill='%234c86d9'%3E%3Ccircle cx='150' cy='120' r='16'/%3E%3Ccircle cx='250' cy='120' r='16'/%3E%3Ccircle cx='350' cy='120' r='16'/%3E%3Ccircle cx='450' cy='120' r='16'/%3E%3C/g%3E%3Ctext x='34' y='70' font-family='sans-serif' font-size='17' fill='%232c5da8'%3E校运会%3C/text%3E%3Cpath d='M90 220 L180 220 M230 220 L320 220 M370 220 L460 220 M510 220 L570 220' stroke='%23a9c3ea' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" alt="大学校运会接力赛冲刺瞬间的校园赛事内容封面" loading="lazy">
+          <span class="mtc-vtag">校园赛事</span>
+          <span class="mtc-vdur">07:32</span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>最后一棒：校运会接力赛的三十秒</h3>
+          <p>她是队里跑得最慢的，但教练把她放在最后一棒。这条片子用三个机位记录了她的三十秒。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a5">顾</span>顾清和</span>
+            <span>11月17日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>932</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#接力 #校运会</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard" data-cat="folk">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23301b10'/%3E%3Cpath d='M0 220 Q160 160 320 220 T640 220 L640 360 L0 360Z' fill='%23603a20'/%3E%3Cg stroke='%23ffcf80' stroke-width='2' opacity='.45'%3E%3Cpath d='M80 0 L80 200'/%3E%3Cpath d='M200 0 L200 210'/%3E%3Cpath d='M440 0 L440 210'/%3E%3Cpath d='M560 0 L560 200'/%3E%3C/g%3E%3Ctext x='34' y='52' font-family='sans-serif' font-size='16' fill='%23ffcf80'%3E民间擂台%3C/text%3E%3C/svg%3E" alt="民间擂台挑战赛现场的热身与规则讲解内容封面" loading="lazy">
+          <span class="mtc-vtag">民间竞技</span>
+          <span class="mtc-vdur">16:20</span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>摆摊十年，他第一次站上擂台</h3>
+          <p>白天在夜市摆摊，晚上在拳馆训练。这场民间挑战赛是他的第一次正式比赛，我们跟拍了整整一周。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a6">何</span>何绍川</span>
+            <span>11月16日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>1105</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#擂台 #坚持</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard" data-cat="story">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%232a2038'/%3E%3Ccircle cx='320' cy='150' r='62' fill='%23e8d9c0' opacity='.28'/%3E%3Cpath d='M250 300 Q320 200 390 300Z' fill='%23a08cc0' opacity='.55'/%3E%3Ctext x='34' y='52' font-family='sans-serif' font-size='16' fill='%23e0d3f5'%3E人物故事%3C/text%3E%3C/svg%3E" alt="十年老将赛后接受采访的人物故事内容封面" loading="lazy">
+          <span class="mtc-vtag">人物故事</span>
+          <span class="mtc-vdur">19:44</span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>打完这场就退役：一个业余球员的十年</h3>
+          <p>他在这支球队待了十年，从主力踢到替补。告别赛那天，队友在更衣室给他留了一件签满名字的球衣。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a2">林</span>林一舟</span>
+            <span>11月15日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>1476</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#告别赛</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard" data-cat="city">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%230d2b3a'/%3E%3Cg stroke='%2346b8d6' stroke-width='2' opacity='.5' fill='none'%3E%3Ccircle cx='320' cy='180' r='40'/%3E%3Ccircle cx='320' cy='180' r='80'/%3E%3Ccircle cx='320' cy='180' r='120'/%3E%3C/g%3E%3Ctext x='34' y='52' font-family='sans-serif' font-size='16' fill='%2395e0f0'%3E赛程解读%3C/text%3E%3C/svg%3E" alt="城市联赛后半程赛程走势与排名的解读内容封面" loading="lazy">
+          <span class="mtc-vtag">城市联赛</span>
+          <span class="mtc-vdur">12:58</span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>后半程赛程解读：争冠集团的三条分水岭</h3>
+          <p>联赛过半，积分榜前四只差五分。我们把剩余赛程的对手强度画成热力图，发现三条关键分水岭。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a4">苏</span>苏映白</span>
+            <span>11月14日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>688</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#赛程 #积分榜</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mtc-vcard" data-cat="campus">
+        <div class="mtc-vcard-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23eaf6ee'/%3E%3Cg fill='%232fa876'%3E%3Crect x='80' y='200' width='50' height='90' rx='6'/%3E%3Crect x='170' y='160' width='50' height='130' rx='6'/%3E%3Crect x='260' y='120' width='50' height='170' rx='6'/%3E%3C/g%3E%3Ccircle cx='470' cy='150' r='52' fill='%23a8e0c6'/%3E%3Ctext x='34' y='64' font-family='sans-serif' font-size='17' fill='%231d7a54'%3E校园篮球%3C/text%3E%3C/svg%3E" alt="校园篮球联赛决赛场馆内的赛前热身内容封面" loading="lazy">
+          <span class="mtc-vtag">校园赛事</span>
+          <span class="mtc-vdur">14:03</span>
+        </div>
+        <div class="mtc-vcard-body">
+          <h3>校园篮球决赛：一个替补席的完整比赛</h3>
+          <p>镜头没有对着球场，而是对着替补席。九十分钟里，有人上场，有人被换下，有人在终场前哭了。</p>
+          <div class="mtc-vmeta">
+            <span class="mtc-author"><span class="mtc-avatar a3">周</span>周予安</span>
+            <span>11月13日</span>
+          </div>
+          <div class="mtc-vmeta">
+            <div class="mtc-vacts">
+              <button class="mtc-icon-btn" type="button" data-like>♡ <span>812</span></button>
+              <button class="mtc-icon-btn" type="button" data-fav>☆ 收藏</button>
+            </div>
+            <span>#替补席</span>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="mtc-empty" id="mtcEmpty">该分类暂无更新内容，试试其他分类，或稍后再来看看。</div>
+  </div>
+</section>
+
+<!-- ===== 专题企划 ===== -->
+<section class="mtc-section mtc-special" id="mtcSpecial">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker" style="color:#ffd977">Special</span>
+        <h2 class="mtc-h2">正在进行的<em style="color:#ffd977">专题企划</em></h2>
+        <p class="mtc-sub">围绕比赛展开的长期选题，每条专题都有明确的更新节奏与共创方式。</p>
+      </div>
+    </div>
+    <div class="mtc-special-grid">
+      <article class="mtc-special-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%230f1a30'/%3E%3Cpath d='M0 330 L160 250 L320 300 L480 220 L640 270 L640 420 L0 420Z' fill='%232b4272'/%3E%3Ccircle cx='140' cy='120' r='52' fill='%23ffb703' opacity='.55'/%3E%3Ctext x='40' y='70' font-family='sans-serif' font-size='24' fill='%23ffffff' opacity='.85'%3E冬季赛程%3C/text%3E%3C/svg%3E" alt="冬季赛程影像企划的城市联赛专题封面" loading="lazy">
+        <span class="mtc-sp-status">更新中 · 第 3 期</span>
+        <h3>冬季赛程影像企划</h3>
+        <p>覆盖六座城市的冬季联赛，每期跟拍一场完整比赛，从赛前准备到赛后复盘，保留完整的现场语境。</p>
+        <div class="mtc-sp-meta"><span>已更新 3 期</span><span>参与创作者 12 位</span></div>
+      </article>
+      <article class="mtc-special-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%231c1030'/%3E%3Cg stroke='%23b158a8' stroke-width='3' opacity='.55'%3E%3Cpath d='M0 360 L640 120'/%3E%3Cpath d='M0 240 L640 380'/%3E%3C/g%3E%3Ccircle cx='330' cy='210' r='70' fill='none' stroke='%23f0b9e8' stroke-width='3'/%3E%3Ctext x='40' y='72' font-family='sans-serif' font-size='24' fill='%23f0b9e8' opacity='.9'%3E人物肖像%3C/text%3E%3C/svg%3E" alt="赛场之外的人物肖像系列专题封面" loading="lazy">
+        <span class="mtc-sp-status">更新中 · 第 5 期</span>
+        <h3>赛场之外：人物肖像系列</h3>
+        <p>不拍比赛，只拍人。裁判、队医、器材师、志愿者——那些不在记分牌上的人，构成了比赛的另一种完整。</p>
+        <div class="mtc-sp-meta"><span>已更新 5 期</span><span>累计 8.6 万次浏览</span></div>
+      </article>
+      <article class="mtc-special-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%230c2e26'/%3E%3Cg fill='%2333d69f' opacity='.5'%3E%3Crect x='70' y='280' width='44' height='80' rx='5'/%3E%3Crect x='140' y='240' width='44' height='120' rx='5'/%3E%3Crect x='210' y='200' width='44' height='160' rx='5'/%3E%3C/g%3E%3Ctext x='40' y='80' font-family='sans-serif' font-size='24' fill='%23a7e6cf' opacity='.9'%3E年度高光%3C/text%3E%3C/svg%3E" alt="年度高光影像征集与投票活动的专题封面" loading="lazy">
+        <span class="mtc-sp-status done">征集报名中</span>
+        <h3>年度高光：影像征集与投票</h3>
+        <p>面向所有创作者开放投稿，提交你在这一年拍下的最满意的一场画面，由社区投票与编辑评审共同选出。</p>
+        <div class="mtc-sp-meta"><span>投稿 11月30日截止</span><span>报名通道开放</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 创作者矩阵 ===== -->
+<section class="mtc-section mtc-creators" id="mtcCreators">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker">Creators</span>
+        <h2 class="mtc-h2">平台上的<em>签约创作者</em></h2>
+        <p class="mtc-sub">他们用不同的视角记录比赛。点击卡片可以查看创作者简介与代表作品。</p>
+      </div>
+    </div>
+    <div class="mtc-creator-grid" id="mtcCreatorGrid">
+      <article class="mtc-creator-card" data-creator="陈牧野｜城市联赛现场记录者。长期跟拍本地联赛，擅长多机位现场剪辑与临场叙事，代表作《最后两分钟》获平台年度影像提名。|作品 86 部|关注 3.2 万">
+        <div class="mtc-creator-ava a1">陈</div>
+        <h3>陈牧野</h3>
+        <div class="mtc-creator-role">现场记录 · 多机位剪辑</div>
+        <p>跟拍城市联赛七年，习惯在赛前两小时到场，只为拍到场馆从空到满的过程。</p>
+        <div class="mtc-creator-nums"><div><b>86</b><span>作品</span></div><div><b>3.2万</b><span>关注</span></div></div>
+      </article>
+      <article class="mtc-creator-card" data-creator="林一舟｜夜场与社区赛事观察者。关注普通人的比赛日常，擅长以长镜头记录不加修饰的现场。|作品 52 部|关注 1.9 万">
+        <div class="mtc-creator-ava a2">林</div>
+        <h3>林一舟</h3>
+        <div class="mtc-creator-role">社区赛事 · 长镜头叙事</div>
+        <p>偏爱夜场和业余联赛，认为一场没有观众的比赛同样值得被完整记录。</p>
+        <div class="mtc-creator-nums"><div><b>52</b><span>作品</span></div><div><b>1.9万</b><span>关注</span></div></div>
+      </article>
+      <article class="mtc-creator-card" data-creator="周予安｜青训与战术内容创作者。前青训教练，擅长战术拆解与赛前准备流程记录，内容兼具专业度与可看性。|作品 41 部|关注 2.6 万">
+        <div class="mtc-creator-ava a3">周</div>
+        <h3>周予安</h3>
+        <div class="mtc-creator-role">战术解读 · 青训观察</div>
+        <p>做过六年青训教练，现在用影像把战术板上的东西讲给更多人听。</p>
+        <div class="mtc-creator-nums"><div><b>41</b><span>作品</span></div><div><b>2.6万</b><span>关注</span></div></div>
+      </article>
+      <article class="mtc-creator-card" data-creator="苏映白｜数据与赛程分析作者。用可视化和数据讲故事，擅长把复杂赛况翻译成一张能看懂的图。|作品 67 部|关注 4.1 万">
+        <div class="mtc-creator-ava a4">苏</div>
+        <h3>苏映白</h3>
+        <div class="mtc-creator-role">数据复盘 · 赛程解读</div>
+        <p>相信数据不会说谎，但需要有人把数据翻译成人话。她做的就是这件事。</p>
+        <div class="mtc-creator-nums"><div><b>67</b><span>作品</span></div><div><b>4.1万</b><span>关注</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 数据榜单 ===== -->
+<section class="mtc-section" id="mtcRank" style="background:#f5f7fb">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker">Ranking</span>
+        <h2 class="mtc-h2">本周<em>内容榜单</em></h2>
+        <p class="mtc-sub">依据播放完成度、互动与社区投票综合计算，每周一更新。</p>
+      </div>
+    </div>
+    <div class="mtc-rank-grid">
+      <div class="mtc-rank-card">
+        <h3>热度榜 <i>播放</i></h3>
+        <ul class="mtc-rank-list">
+          <li><span class="mtc-rank-num">1</span><span class="mtc-rank-title">最后两分钟：总决赛多机位现场</span><span class="mtc-rank-val">2.4万</span></li>
+          <li><span class="mtc-rank-num">2</span><span class="mtc-rank-title">打完这场就退役：一个业余球员的十年</span><span class="mtc-rank-val">1.9万</span></li>
+          <li><span class="mtc-rank-num">3</span><span class="mtc-rank-title">摆摊十年，他第一次站上擂台</span><span class="mtc-rank-val">1.6万</span></li>
+          <li><span class="mtc-rank-num">4</span><span class="mtc-rank-title">最后一棒：校运会接力赛的三十秒</span><span class="mtc-rank-val">1.3万</span></li>
+          <li><span class="mtc-rank-num">5</span><span class="mtc-rank-title">用一张图看懂一场比赛</span><span class="mtc-rank-val">1.1万</span></li>
+        </ul>
+      </div>
+      <div class="mtc-rank-card">
+        <h3>新人榜 <i>首作</i></h3>
+        <ul class="mtc-rank-list">
+          <li><span class="mtc-rank-num">1</span><span class="mtc-rank-title">顾清和 · 校园赛事首作</span><span class="mtc-rank-val">932 赞</span></li>
+          <li><span class="mtc-rank-num">2</span><span class="mtc-rank-title">何绍川 · 民间擂台跟拍</span><span class="mtc-rank-val">826 赞</span></li>
+          <li><span class="mtc-rank-num">3</span><span class="mtc-rank-title">梁小满 · 街头三人篮球</span><span class="mtc-rank-val">704 赞</span></li>
+          <li><span class="mtc-rank-num">4</span><span class="mtc-rank-title">许南音 · 赛场声音采集</span><span class="mtc-rank-val">611 赞</span></li>
+          <li><span class="mtc-rank-num">5</span><span class="mtc-rank-title">钱祺 · 业余骑行计时赛</span><span class="mtc-rank-val">548 赞</span></li>
+        </ul>
+      </div>
+      <div class="mtc-rank-card">
+        <h3>口碑榜 <i>评分</i></h3>
+        <ul class="mtc-rank-list">
+          <li><span class="mtc-rank-num">1</span><span class="mtc-rank-title">战术板前的四十分钟</span><span class="mtc-rank-val">9.6</span></li>
+          <li><span class="mtc-rank-num">2</span><span class="mtc-rank-title">同城德比：两座球场之间的一条街</span><span class="mtc-rank-val">9.5</span></li>
+          <li><span class="mtc-rank-num">3</span><span class="mtc-rank-title">赛场之外：队医的一天</span><span class="mtc-rank-val">9.4</span></li>
+          <li><span class="mtc-rank-num">4</span><span class="mtc-rank-title">后半程赛程解读</span><span class="mtc-rank-val">9.2</span></li>
+          <li><span class="mtc-rank-num">5</span><span class="mtc-rank-title">校园篮球决赛：一个替补席</span><span class="mtc-rank-val">9.1</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 用户评价 ===== -->
+<section class="mtc-section mtc-voice" id="mtcVoice">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker">Voices</span>
+        <h2 class="mtc-h2">来自<em>社区用户</em>的真实反馈</h2>
+        <p class="mtc-sub">球员、教练、观众、创作者——每个人都能在这里找到自己的角度。</p>
+      </div>
+    </div>
+    <div class="mtc-voice-grid">
+      <div class="mtc-voice-card">
+        <div class="mtc-voice-head"><span class="mtc-avatar a1">郑</span><div><b>郑铭川</b><span>业余联赛球员</span></div></div>
+        <p>我们队在一场关键比赛里输了，但那条片子把我们在下半场的坚持完整记录下来了。队友们看完没人说话，第二天训练全部提前到了。这是比分给不了的东西。</p>
+        <div class="mtc-stars">★★★★★</div>
+      </div>
+      <div class="mtc-voice-card">
+        <div class="mtc-voice-head"><span class="mtc-avatar a3">徐</span><div><b>徐立平</b><span>青训教练</span></div></div>
+        <p>战术拆解那一系列我基本每期都看。它对业余教练很有用，讲的不是空理论，是真的能拿去训练场上讲的东西。专业平台上少有的实在内容。</p>
+        <div class="mtc-stars">★★★★★</div>
+      </div>
+      <div class="mtc-voice-card">
+        <div class="mtc-voice-head"><span class="mtc-avatar a5">罗</span><div><b>罗嘉禾</b><span>校队队员家长</span></div></div>
+        <p>孩子第一次参加正式比赛，我们没能到现场。后来在平台找到了那场比赛的记录，看到了他上场的那几分钟。画质很清晰，连他紧张的表情都拍到了。</p>
+        <div class="mtc-stars">★★★★★</div>
+      </div>
+      <div class="mtc-voice-card">
+        <div class="mtc-voice-head"><span class="mtc-avatar a4">乔</span><div><b>乔一诺</b><span>影像创作者</span></div></div>
+        <p>签约之后平台给了选题会和器材支持，最重要的是署名和授权机制很清楚。我的片子被人转载时会主动标注来源，这点在同类平台里很难得。</p>
+        <div class="mtc-stars">★★★★☆</div>
+      </div>
+      <div class="mtc-voice-card">
+        <div class="mtc-voice-head"><span class="mtc-avatar a6">贺</span><div><b>贺文远</b><span>赛事主办方运营</span></div></div>
+        <p>我们一场社区赛的完赛影像被完整收录，后来做招商方案时直接调用了素材库，省了很多事。数据标签做得细，按赛事检索很方便。</p>
+        <div class="mtc-stars">★★★★★</div>
+      </div>
+      <div class="mtc-voice-card">
+        <div class="mtc-voice-head"><span class="mtc-avatar a2">阮</span><div><b>阮小满</b><span>普通观众</span></div></div>
+        <p>我其实不太懂规则，但人物故事那几篇看得挺投入。它不要求你先懂比赛，只需要你对人的处境感兴趣。这一点很友好。</p>
+        <div class="mtc-stars">★★★★☆</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 企业动态 ===== -->
+<section class="mtc-section mtc-log" id="mtcLog">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head">
+      <div>
+        <span class="mtc-kicker">Newsroom</span>
+        <h2 class="mtc-h2">企业动态与<em>官方发布</em></h2>
+        <p class="mtc-sub">品牌公告、内容更新与合作信息，均在此同步发布。</p>
+      </div>
+    </div>
+    <div class="mtc-log-list">
+      <div class="mtc-log-item">
+        <div class="mtc-log-date">2026 / 11 / 18</div>
+        <h3>冬季赛程影像企划第三期上线</h3>
+        <p>本期跟拍城市联赛决赛夜，新增六个机位素材与完整赛后采访。专题页同步更新拍摄手记，创作者可申请素材二次创作授权。</p>
+      </div>
+      <div class="mtc-log-item">
+        <div class="mtc-log-date">2026 / 11 / 15</div>
+        <h3>年度高光影像征集开启报名</h3>
+        <p>面向所有创作者开放投稿，主题为「我拍下的那一场比赛」。投稿截止 11月30日，入选作品将进入年度展映并获得平台推荐资源。</p>
+      </div>
+      <div class="mtc-log-item">
+        <div class="mtc-log-date">2026 / 11 / 10</div>
+        <h3>与三城赛事主办方达成影像合作</h3>
+        <p>平台将为首批合作赛事提供标准化影像记录服务，包括赛前宣传片、现场跟拍与赛后集锦。合作赛事的所有素材将纳入公共档案库。</p>
+      </div>
+      <div class="mtc-log-item">
+        <div class="mtc-log-date">2026 / 11 / 03</div>
+        <h3>创作者培训计划第二期结课</h3>
+        <p>本期共 24 位创作者完成现场摄制与后期规范培训，其中 9 位通过考核进入签约序列。第三期报名将在十二月开放。</p>
+      </div>
+      <div class="mtc-log-item">
+        <div class="mtc-log-date">2026 / 10 / 28</div>
+        <h3>赛事影像素材库完成结构升级</h3>
+        <p>新增按赛事级别、地区、时间与创作者四条维度的检索路径，历史素材的标签体系同步重建，检索效率明显提升。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="mtc-section mtc-faq" id="mtcFaq">
+  <div class="mtc-wrap">
+    <div class="mtc-section-head" style="justify-content:center;text-align:center">
+      <div>
+        <span class="mtc-kicker" style="justify-content:center">FAQ</span>
+        <h2 class="mtc-h2">常见问题</h2>
+        <p class="mtc-sub" style="margin-left:auto;margin-right:auto">关于内容、版权与创作者合作的说明，如有其他疑问可通过联系入口反馈。</p>
+      </div>
+    </div>
+    <div class="mtc-faq-list">
+      <details class="mtc-faq-item" open>
+        <summary>平台上的比赛影像都是原创的吗？</summary>
+        <div class="mtc-faq-body">是的。平台所有影像内容均由品牌编辑团队或签约创作者拍摄制作，上传时即记录拍摄者与授权信息。转载与二次使用需获得明确授权，未经许可的搬运会被下架处理。</div>
+      </details>
+      <details class="mtc-faq-item">
+        <summary>如何成为签约创作者？</summary>
+        <div class="mtc-faq-body">可以通过页面上的「投稿报名」入口提交作品与个人信息。我们会在一周内联系符合要求的申请者，沟通选题方向与合作方式。没有专业设备也可以申请，我们更看重视角与持续性。</div>
+      </details>
+      <details class="mtc-faq-item">
+        <summary>我的比赛能被平台收录吗？</summary>
+        <div class="mtc-faq-body">可以。赛事主办方、球队或个人都可以提交收录申请，说明赛事名称、时间、地点与基本情况。我们会评估场地条件与记录价值，排期后安排拍摄或接收素材。</div>
+      </details>
+      <details class="mtc-faq-item">
+        <summary>内容更新频率是怎样的？</summary>
+        <div class="mtc-faq-body">内容流每日更新，焦点内容每周精选一次，专题企划按各专题的既定节奏推进。企业动态与合作信息会在官方发布后同步至动态区。</div>
+      </details>
+      <details class="mtc-faq-item">
+        <summary>能否下载影像素材用于个人收藏？</summary>
+        <div class="mtc-faq-body">个人非商业用途的收藏可在作品页申请，经拍摄者同意后提供高清文件。商业用途需走正式的授权流程，具体可在联系页面留下需求说明。</div>
+      </details>
+      <details class="mtc-faq-item">
+        <summary>赛事主办方如何与平台合作？</summary>
+        <div class="mtc-faq-body">我们提供赛前宣传、现场跟拍、赛后集锦与档案管理等服务。合作赛事会获得专属内容页与素材库权限。可在联系页面填写合作意向，运营团队会安排对接。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 联系 ===== -->
+<section class="mtc-section mtc-contact" id="mtcContact">
+  <div class="mtc-wrap">
+    <div class="mtc-contact-panel">
+      <div>
+        <h2>把你的比赛，交给专业的镜头</h2>
+        <p>无论是想投稿作品、申请赛事收录，还是洽谈企业合作，我们都愿意认真听。每天比赛的每一场记录，都从一次简单的沟通开始。</p>
+        <div class="mtc-contact-actions">
+          <button class="mtc-btn mtc-btn-primary" type="button" data-open="submit">投稿 / 报名</button>
+          <button class="mtc-btn mtc-btn-ghost" type="button" data-open="feedback">反馈与建议</button>
+        </div>
+      </div>
+      <div class="mtc-contact-info">
+        <div><b>合作邮箱</b><span>partner@meitianmatch.cn</span></div>
+        <div><b>创作者支持</b><span>creator@meitianmatch.cn</span></div>
+        <div><b>工作时间</b><span>周一至周五 10:00 – 19:00</span></div>
+        <div><b>内容中心</b><span>城市影像实验室 · 赛事档案组</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="mtc-footer">
+  <div class="mtc-wrap">
+    <div class="mtc-footer-grid">
+      <div>
+        <div class="mtc-footer-brand">
+          <span class="mtc-brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="#ffb703"/></svg></span>
+          <strong style="font-size:16px">每天比赛 MEITIAN MATCH</strong>
+        </div>
+        <p>每天比赛官方网站，专注赛事影像的原创内容品牌与创作者社区。持续运营，每日更新，坚持以真实、专业、有表达的内容记录每一场对决。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#mtcFocus">焦点赛事</a></li>
+          <li><a href="#mtcStream">内容流</a></li>
+          <li><a href="#mtcSpecial">专题企划</a></li>
+          <li><a href="#mtcRank">内容榜单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>品牌</h4>
+        <ul>
+          <li><a href="#mtcAbout">品牌故事</a></li>
+          <li><a href="#mtcCreators">创作者矩阵</a></li>
+          <li><a href="#mtcLog">企业动态</a></li>
+          <li><a href="#mtcVoice">用户反馈</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支持</h4>
+        <ul>
+          <li><a href="#mtcFaq">常见问题</a></li>
+          <li><a href="#mtcContact">合作联系</a></li>
+          <li><a href="#mtcContact">投稿报名</a></li>
+          <li><a href="#mtcHome">回到首页</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mtc-footer-bottom">
+      <span>© 2026 每天比赛 官方网站 · 版权所有 · 持续运营中</span>
+      <span>品牌备案号 沪ICP备2026011874号-2 · 内容均获拍摄者授权 · 正版原创</span>
+    </div>
+  </div>
+</footer>
+
+<button class="mtc-top-btn" type="button" id="mtcTopBtn" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<div class="mtc-toast" id="mtcToast"></div>
+
+<!-- 投稿/反馈弹窗 -->
+<div class="mtc-modal" id="mtcModal">
+  <div class="mtc-modal-box">
+    <button class="mtc-modal-close" type="button" id="mtcModalClose" aria-label="关闭">×</button>
+    <h3 id="mtcModalTitle">投稿 / 报名</h3>
+    <p id="mtcModalDesc">留下你的信息与作品方向，创作者支持团队会在一周内与你联系。</p>
+    <form id="mtcModalForm">
+      <div class="mtc-field">
+        <label for="mtcFName">称呼</label>
+        <input id="mtcFName" type="text" placeholder="你的昵称或真实姓名" required>
+      </div>
+      <div class="mtc-field">
+        <label for="mtcFContact">联系方式</label>
+        <input id="mtcFContact" type="text" placeholder="邮箱或手机号" required>
+      </div>
+      <div class="mtc-field">
+        <label for="mtcFMsg">想说的话</label>
+        <textarea id="mtcFMsg" rows="3" placeholder="作品方向、赛事名称或合作需求"></textarea>
+      </div>
+      <button class="mtc-btn mtc-btn-primary" type="submit" style="width:100%;justify-content:center">提交</button>
+    </form>
+  </div>
+</div>
+
+<!-- 分享弹窗 -->
+<div class="mtc-modal" id="mtcShareModal">
+  <div class="mtc-modal-box">
+    <button class="mtc-modal-close" type="button" id="mtcShareClose" aria-label="关闭">×</button>
+    <h3>分享这条内容</h3>
+    <p>把好内容分享给同样热爱比赛的人。</p>
+    <div class="mtc-share-row">
+      <a href="#mtcFocus" data-share-item="微信">微信</a>
+      <a href="#mtcFocus" data-share-item="微博">微博</a>
+      <a href="#mtcFocus" data-share-item="QQ">QQ</a>
+      <a href="#mtcFocus" data-share-item="链接">复制链接</a>
+    </div>
+  </div>
+</div>
+
+<!-- 创作者弹窗 -->
+<div class="mtc-modal" id="mtcCreatorModal">
+  <div class="mtc-modal-box">
+    <button class="mtc-modal-close" type="button" id="mtcCreatorClose" aria-label="关闭">×</button>
+    <h3 id="mtcCreatorName">创作者</h3>
+    <p id="mtcCreatorBody">创作者简介</p>
+    <div class="mtc-share-row">
+      <a href="#mtcCreators" data-close-creator>查看更多创作者</a>
+      <a href="#mtcStream" data-close-creator>浏览作品</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ===== Toast ===== */
+  var toastEl = document.getElementById('mtcToast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('is-show'); }, 2200);
+  }
+
+  /* ===== 吸顶公告条：收起 + 高度补偿锚点偏移 ===== */
+  var topbar = document.getElementById('mtcTopbar');
+  var topbarClose = document.getElementById('mtcTopbarClose');
+  var header = document.getElementById('mtcHome');
+  function syncStickyOffset(){
+    var h = (topbar && topbar.style.display !== 'none' ? topbar.offsetHeight : 0) + (header ? header.offsetHeight : 0);
+    document.documentElement.style.setProperty('--mtc-sticky-h', h + 'px');
+    document.querySelectorAll('section[id], header[id]').forEach(function(sec){
+      sec.style.scrollMarginTop = h + 12 + 'px';
+    });
+  }
+  if(topbarClose){
+    topbarClose.addEventListener('click', function(){
+      topbar.style.display = 'none';
+      syncStickyOffset();
+    });
+  }
+  syncStickyOffset();
+  window.addEventListener('resize', syncStickyOffset);
+
+  /* ===== 移动端导航 ===== */
+  var burger = document.getElementById('mtcBurger');
+  var nav = document.getElementById('mtcNav');
+  if(burger){
+    burger.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.textContent = open ? '×' : '☰';
+    });
+  }
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.querySelectorAll('a').forEach(function(x){ x.classList.remove('is-active'); });
+      a.classList.add('is-active');
+      if(nav.classList.contains('is-open')){
+        nav.classList.remove('is-open');
+        burger.textContent = '☰';
+        burger.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+
+  /* ===== 搜索提示 ===== */
+  var searchWrap = document.getElementById('mtcSearchWrap');
+  var searchInput = document.getElementById('mtcSearchInput');
+  var searchTip = document.getElementById('mtcSearchTip');
+  var searchBtn = document.getElementById('mtcSearchBtn');
+  function runSearch(q){
+    q = (q || '').trim();
+    if(!q){ toast('请输入关键词后再搜索'); return; }
+    var found = false;
+    document.querySelectorAll('#mtcStreamGrid .mtc-vcard').forEach(function(card){
+      var text = card.textContent;
+      var hit = text.indexOf(q) > -1;
+      card.classList.toggle('is-hidden', !hit);
+      if(hit) found = true;
+    });
+    document.getElementById('mtcEmpty').classList.toggle('is-open', !found);
+    searchTip.classList.remove('is-open');
+    document.getElementById('mtcStream').scrollIntoView({behavior:'smooth'});
+    toast(found ? ('已为你筛选「' + q + '」相关内容') : ('暂无「' + q + '」的直接结果，可试试其他关键词'));
+  }
+  if(searchInput){
+    searchInput.addEventListener('focus', function(){ searchTip.classList.add('is-open'); });
+    searchInput.addEventListener('input', function(){
+      searchTip.classList.toggle('is-open', searchInput.value.length === 0);
+    });
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); runSearch(searchInput.value); }
+    });
+  }
+  if(searchBtn) searchBtn.addEventListener('click', function(){ runSearch(searchInput.value); });
+  searchTip.querySelectorAll('span').forEach(function(sp){
+    sp.addEventListener('click', function(){
+      searchInput.value = sp.getAttribute('data-q');
+      runSearch(searchInput.value);
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(searchWrap && !searchWrap.contains(e.target)) searchTip.classList.remove('is-open');
+  });
+
+  /* ===== 点赞 / 收藏 ===== */
+  document.querySelectorAll('[data-like]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var span = btn.querySelector('span');
+      var n = parseInt(span.textContent, 10) || 0;
+      var on = btn.classList.toggle('is-on');
+      n += on ? 1 : -1;
+      if(n < 0) n = 0;
+      span.textContent = n;
+      toast(on ? '已点赞' : '已取消点赞');
+    });
+  });
+  document.querySelectorAll('[data-fav]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var on = btn.classList.toggle('is-on');
+      btn.innerHTML = on ? '★ 已收藏' : '☆ 收藏';
+      toast(on ? '已加入收藏' : '已取消收藏');
+    });
+  });
+
+  /* ===== 分享弹窗 ===== */
+  var shareModal = document.getElementById('mtcShareModal');
+  var shareClose = document.getElementById('mtcShareClose');
+  document.querySelectorAll('[data-share]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      shareModal.classList.add('is-open');
+    });
+  });
+  if(shareClose) shareClose.addEventListener('click', function(){ shareModal.classList.remove('is-open'); });
+  shareModal.querySelectorAll('[data-share-item]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var item = a.getAttribute('data-share-item');
+      if(item === '链接'){
+        var url = window.location.href;
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(url).then(function(){
+            toast('链接已复制，可粘贴分享');
+          }).catch(function(){ toast('复制失败，请手动复制地址栏链接'); });
+        }else{
+          toast('当前浏览器不支持自动复制，请手动复制地址栏链接');
+        }
+      }else{
+        toast('已生成' + item + '分享卡片，可在应用中完成分享');
+      }
+      shareModal.classList.remove('is-open');
+    });
+  });
+  shareModal.addEventListener('click', function(e){
+    if(e.target === shareModal) shareModal.classList.remove('is-open');
+  });
+
+  /* ===== 投稿 / 反馈弹窗 ===== */
+  var modal = document.getElementById('mtcModal');
+  var modalTitle = document.getElementById('mtcModalTitle');
+  var modalDesc = document.getElementById('mtcModalDesc');
+  var modalClose = document.getElementById('mtcModalClose');
+  var modalForm = document.getElementById('mtcModalForm');
+  var submitBtn = document.getElementById('mtcSubmitBtn');
+  function openModal(type){
+    if(type === 'feedback'){
+      modalTitle.textContent = '反馈与建议';
+      modalDesc.textContent = '无论是对内容、体验还是功能的意见，我们都会认真查看并跟进处理。';
+    }else{
+      modalTitle.textContent = '投稿 / 报名';
+      modalDesc.textContent = '留下你的信息与作品方向，创作者支持团队会在一周内与你联系。';
+    }
+    modal.classList.add('is-open');
+  }
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click', function(){ openModal(b.getAttribute('data-open')); });
+  });
+  if(submitBtn) submitBtn.addEventListener('click', function(){ openModal('submit'); });
+  if(modalClose) modalClose.addEventListener('click', function(){ modal.classList.remove('is-open'); });
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) modal.classList.remove('is-open');
+  });
+  modalForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    modal.classList.remove('is-open');
+    modalForm.reset();
+    toast('提交成功，我们会尽快与你联系');
+  });
+
+  /* ===== 创作者弹窗 ===== */
+  var creatorModal = document.getElementById('mtcCreatorModal');
+  var creatorName = document.getElementById('mtcCreatorName');
+  var creatorBody = document.getElementById('mtcCreatorBody');
+  var creatorClose = document.getElementById('mtcCreatorClose');
+  document.querySelectorAll('.mtc-creator-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var data = (card.getAttribute('data-creator') || '').split('|');
+      creatorName.textContent = data[0] || '创作者';
+      creatorBody.textContent = (data[1] || '') + ' ' + (data[2] || '') + '，' + (data[3] || '') + '。';
+      creatorModal.classList.add('is-open');
+    });
+  });
+  if(creatorClose) creatorClose.addEventListener('click', function(){ creatorModal.classList.remove('is-open'); });
+  creatorModal.addEventListener('click', function(e){
+    if(e.target === creatorModal) creatorModal.classList.remove('is-open');
+  });
+  creatorModal.querySelectorAll('[data-close-creator]').forEach(function(a){
+    a.addEventListener('click', function(){ creatorModal.classList.remove('is-open'); });
+  });
+
+  /* ===== 标签筛选 ===== */
+  var filterBar = document.getElementById('mtcFilters');
+  var emptyTip = document.getElementById('mtcEmpty');
+  filterBar.querySelectorAll('.mtc-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      filterBar.querySelectorAll('.mtc-chip').forEach(function(c){ c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      var cat = chip.getAttribute('data-filter');
+      var shown = 0;
+      document.querySelectorAll('#mtcStreamGrid .mtc-vcard').forEach(function(card){
+        var ok = (cat === 'all') || (card.getAttribute('data-cat') === cat);
+        card.classList.toggle('is-hidden', !ok);
+        if(ok) shown++;
+      });
+      emptyTip.classList.toggle('is-open', shown === 0);
+    });
+  });
+
+  /* ===== 首屏播放按钮 ===== */
+  var heroPlay = document.getElementById('mtcHeroPlay');
+  if(heroPlay){
+    heroPlay.addEventListener('click', function(){
+      toast('焦点内容《最后两分钟》正在为你准备');
+    });
+  }
+
+  /* ===== 回到顶部 ===== */
+  var topBtn = document.getElementById('mtcTopBtn');
+  window.addEventListener('scroll', function(){
+    topBtn.classList.toggle('is-show', window.scrollY > 420);
+  });
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+})();
+</script>
+</body>
+                                 </html>
